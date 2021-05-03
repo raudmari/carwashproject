@@ -48,5 +48,13 @@
         <addForeignKeyConstraint baseTableName="booking" baseColumnNames="customer_id" constraintName="fk_customer" referencedTableName="customer"
                                  referencedColumnNames="id"/>
     </changeSet>
+    <changeSet id="carwash add username and password 03.05.21" author="Märt">
+        <addColumn tableName="customer">
+            <column name="username" type="text"></column>
+        </addColumn>
+        <addColumn tableName="customer">
+            <column name="password" type="text"></column>
+        </addColumn>
+    </changeSet>
 
 </databaseChangeLog>
