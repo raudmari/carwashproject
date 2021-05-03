@@ -3,4 +3,50 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet id="carwash 03.05.21" author="Märt">
+        <createTable tableName="wash_station">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"></constraints>
+            </column>
+            <column name="city" type="text"/>
+            <column name="address" type="text"/>
+            <column name="contact_id" type="text"/>
+        </createTable>
+        <createTable tableName="customer">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="firstname" type="text"/>
+            <column name="lastname" type="text"/>
+            <column name="email" type="text"/>
+            <column name="phone" type="text"/>
+        </createTable>
+        <createTable tableName="service_type">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="price" type="double"/>
+            <column name="duration" type="text"/>
+            <column name="wash_type" type="text"/>
+        </createTable>
+        <createTable tableName="booking">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="service_type_id" type="int"/>
+            <column name="date" type="date"/>
+            <column name="time" type="time"/>
+            <column name="wash_station_id" type="int"/>
+            <column name="customer_id" type="int"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="carwash foreign keys 03.05.21" author="Märt">
+        <addForeignKeyConstraint baseTableName="booking" baseColumnNames="service_type_id" constraintName="fk_service" referencedTableName="service_type"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="booking" baseColumnNames="wash_station_id" constraintName="fk_wash_station" referencedTableName="wash_station"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="booking" baseColumnNames="customer_id" constraintName="fk_customer" referencedTableName="customer"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
 </databaseChangeLog>
