@@ -56,5 +56,12 @@
             <column name="password" type="text"></column>
         </addColumn>
     </changeSet>
+    <changeSet id="change date and time" author="Märt">
+        <dropColumn tableName="booking" columnName="date"/>
+        <dropColumn tableName="booking" columnName="time"/>
+        <addColumn tableName="booking">
+            <column name="date_time" type="timestamp"></column>
+        </addColumn>
+    </changeSet>
 
 </databaseChangeLog>
