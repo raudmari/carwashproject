@@ -20,9 +20,12 @@ public class BookingService {
         booking.setServiceTypeId(info.getServiceTypeId());
         booking.setCustomerId(info.getCustomerId());
         booking.setPin(info.getPin());
-
         bookingRepository.save(booking);
 
     }
+
+//    public String timeTaken(Booking time) {
+//
+//    }
 
 }
