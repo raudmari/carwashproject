@@ -19,8 +19,10 @@ public class BookingService {
         booking.setWashStationId(info.getWashStationId());
         booking.setServiceTypeId(info.getServiceTypeId());
         booking.setCustomerId(info.getCustomerId());
-        bookingRepository.save(booking);
-    }
+        booking.setPin(info.getPin());
 
+        bookingRepository.save(booking);
+
+    }
 
 }
