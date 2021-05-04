@@ -1,8 +1,12 @@
 package com.example.valiit.carwashproject.Booking;
 
 
+import com.example.valiit.carwashproject.exceptions.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class BookingService {
@@ -24,11 +28,12 @@ public class BookingService {
 
     }
 
-    public void timeTaken(Booking time) {
-        LocalDateTime dbDateTime = bookingRepository.getOne(time.getId()).getDateTime();
-        if (time.getDateTime() == dbDateTime) {
+    public String timeTaken(Booking time) {
+        Optional<Booking> bookingOptional = bookingRepository.findByDateTimeAndWashStationId(time.getDateTime(), time.getWashStationId());
+        if(bookingOptional.isPresent()){
             throw new ApplicationException("See aeg on broneeritud");
         }
+        return "";
     }
 
 }
