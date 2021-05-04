@@ -63,5 +63,11 @@
             <column name="date_time" type="timestamp"></column>
         </addColumn>
     </changeSet>
+    <changeSet id="add Pin" author="Märt">
+        <addColumn tableName="booking">
+            <column name="pin" type="int"></column>
+        </addColumn>
+    </changeSet>
+
 
 </databaseChangeLog>

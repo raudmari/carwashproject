@@ -16,6 +16,15 @@ public class Booking {
     private Integer serviceTypeId;
     private Integer customerId;
     private LocalDateTime dateTime;
+    private Integer pin =1+ (int) (Math.random() * 1000);
+
+    public Integer getPin() {
+        return pin;
+    }
+
+    public void setPin(Integer pin) {
+        this.pin = pin;
+    }
 
     public LocalDateTime getDateTime() {
         return dateTime;
