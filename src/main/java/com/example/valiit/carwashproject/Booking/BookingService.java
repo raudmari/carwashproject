@@ -2,11 +2,11 @@ package com.example.valiit.carwashproject.Booking;
 
 
 import com.example.valiit.carwashproject.exceptions.ApplicationException;
-import liquibase.pro.packaged.B;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class BookingService {
@@ -23,16 +23,17 @@ public class BookingService {
         booking.setWashStationId(info.getWashStationId());
         booking.setServiceTypeId(info.getServiceTypeId());
         booking.setCustomerId(info.getCustomerId());
-        LocalDateTime dbTateTime = bookingRepository.getOne(info.getId()).getDateTime();
-        if (info.getDateTime() == dbTateTime) {
-            throw new ApplicationException("See aeg on broneeritud!");
-        }
+        booking.setPin(info.getPin());
         bookingRepository.save(booking);
 
     }
 
-//    public String timeTaken(Booking time) {
-//
-//    }
+    public String timeTaken(Booking time) {
+        Optional<Booking> bookingOptional = bookingRepository.findByDateTimeAndWashStationId(time.getDateTime(), time.getWashStationId());
+        if(bookingOptional.isPresent()){
+            throw new ApplicationException("See aeg on broneeritud");
+        }
+        return "";
+    }
 
 }
