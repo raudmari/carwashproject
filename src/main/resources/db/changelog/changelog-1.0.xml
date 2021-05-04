@@ -56,10 +56,5 @@
             <column name="password" type="text"></column>
         </addColumn>
     </changeSet>
-    <changeSet id="4/5/21 loginDate col" author="Marion">
-        <addColumn tableName="customer">
-            <column name="login_time" type="timestamp"></column>
-        </addColumn>
-    </changeSet>
 
 </databaseChangeLog>
