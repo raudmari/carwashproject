@@ -13,8 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Controller {
 
+
+    @Autowired
+    private NamedParameterJdbcTemplate jdbcTemplate;
     @Autowired
     private Service service;
+
 
     //http://localhost:9090/carWash/newAccountJoin
     @PostMapping("carWash/newAccountJoin")

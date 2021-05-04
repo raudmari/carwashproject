@@ -16,7 +16,7 @@ public class Repository {
 
     public void newAccountJoin(AccountJoin request) {
 
-        String sql = "INSERT INTO customer(firstName, lastName, phone, email, username, password)" +
+        String sql = "INSERT INTO customer(firstName, lastName, phone, email, password, username)" +
                 " VALUES (:firstname, :lastname, :email, :phone, :username, :password)";
 
         Map<String, Object> paramMap = new HashMap<>();
