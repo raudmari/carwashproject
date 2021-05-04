@@ -17,7 +17,7 @@ public class Repository {
     public void newAccountJoin(AccountJoin request) {
 
         String sql = "INSERT INTO customer(firstName, lastName, phone, email, username, password)" +
-                " VALUES (:firstname, :lastname, :email, :phone, :username, :password)";
+                " VALUES (:firstname, :lastname, :phone, :email, :username, :password)";
 
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("firstname", request.getFirstName());
@@ -29,6 +29,25 @@ public class Repository {
         jdbcTemplate.update(sql, paramMap);
     }
 
+    public boolean usernameExists(String username) {
+        String usernameExists = "SELECT count(*) > 0 FROM customer WHERE username = :username";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("username", username);
+        return jdbcTemplate.queryForObject(usernameExists, paramMap, Boolean.class);
+    }
 
+    public boolean emailExists(String email) {
+        String emailExists = "SELECT count(*) > 0 FROM customer WHERE email = :email";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("email", email);
+        return jdbcTemplate.queryForObject(emailExists, paramMap, Boolean.class);
+    }
+
+    public boolean phoneExists(String phone) {
+        String phoneExists = "SELECT count(*) > 0 FROM customer WHERE phone = :phone";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("phone", phone);
+        return jdbcTemplate.queryForObject(phoneExists, paramMap, Boolean.class);
+    }
 
 }
