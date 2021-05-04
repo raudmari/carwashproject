@@ -63,5 +63,16 @@
             <column name="date_time" type="timestamp"></column>
         </addColumn>
     </changeSet>
+    <changeSet id="add service description" author="Märt">
+        <addColumn tableName="service_type">
+            <column name="description" type="text"></column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="add Pin" author="Märt">
+        <addColumn tableName="booking">
+            <column name="pin" type="int"></column>
+        </addColumn>
+    </changeSet>
+
 
 </databaseChangeLog>
