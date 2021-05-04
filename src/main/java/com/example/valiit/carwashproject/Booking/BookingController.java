@@ -13,7 +13,7 @@ public class BookingController {
     private BookingService bookingService;
 
     @CrossOrigin
-    @PostMapping("carwash/booking")
+    @PostMapping("api/public/carwash/booking")
     public void booking(@RequestBody Booking id) {
         bookingService.booking(id);
     }
