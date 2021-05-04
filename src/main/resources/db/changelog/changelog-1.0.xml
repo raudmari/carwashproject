@@ -41,11 +41,14 @@
         </createTable>
     </changeSet>
     <changeSet id="carwash foreign keys 03.05.21" author="Märt">
-        <addForeignKeyConstraint baseTableName="booking" baseColumnNames="service_type_id" constraintName="fk_service" referencedTableName="service_type"
+        <addForeignKeyConstraint baseTableName="booking" baseColumnNames="service_type_id" constraintName="fk_service"
+                                 referencedTableName="service_type"
                                  referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="booking" baseColumnNames="wash_station_id" constraintName="fk_wash_station" referencedTableName="wash_station"
+        <addForeignKeyConstraint baseTableName="booking" baseColumnNames="wash_station_id"
+                                 constraintName="fk_wash_station" referencedTableName="wash_station"
                                  referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="booking" baseColumnNames="customer_id" constraintName="fk_customer" referencedTableName="customer"
+        <addForeignKeyConstraint baseTableName="booking" baseColumnNames="customer_id" constraintName="fk_customer"
+                                 referencedTableName="customer"
                                  referencedColumnNames="id"/>
     </changeSet>
     <changeSet id="carwash add username and password 03.05.21" author="Märt">
@@ -71,6 +74,21 @@
     <changeSet id="add Pin" author="Märt">
         <addColumn tableName="booking">
             <column name="pin" type="int"></column>
+        </addColumn>
+    </changeSet>
+    <changeSet id="history" author="Alari">
+        <createTable tableName="history">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="service_type_id" type="int"/>
+            <column name="wash_station_id" type="int"/>
+            <column name="date" type="date"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="add username" author="Alari">
+        <addColumn tableName="history">
+            <column name="username" type="text"></column>
         </addColumn>
     </changeSet>
 

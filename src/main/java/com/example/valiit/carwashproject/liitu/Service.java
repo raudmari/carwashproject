@@ -1,9 +1,12 @@
 package com.example.valiit.carwashproject.liitu;
 
 import com.example.valiit.carwashproject.DTO.AccountJoin;
+import com.example.valiit.carwashproject.DTO.History;
 import com.example.valiit.carwashproject.exceptions.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.List;
 
 @org.springframework.stereotype.Service
 public class Service {
@@ -32,4 +35,9 @@ public class Service {
         repository.newAccountJoin(request);
 
     }
+    public List<History> getAccountHistory(String username) {
+
+        return repository.getAccountHistory(username);
+    }
+
 }

@@ -2,10 +2,13 @@ package com.example.valiit.carwashproject.liitu;
 
 
 import com.example.valiit.carwashproject.DTO.AccountJoin;
+import com.example.valiit.carwashproject.DTO.History;
+import com.example.valiit.carwashproject.DTO.HistoryRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @org.springframework.stereotype.Repository
@@ -49,5 +52,14 @@ public class Repository {
         paramMap.put("phone", phone);
         return jdbcTemplate.queryForObject(phoneExists, paramMap, Boolean.class);
     }
+
+    public List<History> getAccountHistory(String username) {
+        String sql = "SELECT * FROM history WHERE username = :username ";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("username", username);
+
+        return jdbcTemplate.query(sql, paramMap, new HistoryRowMapper());
+    }
+
 
 }
