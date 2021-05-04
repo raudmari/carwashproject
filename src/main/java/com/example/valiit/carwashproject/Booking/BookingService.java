@@ -28,7 +28,11 @@ public class BookingService {
             throw new ApplicationException("See aeg on broneeritud!");
         }
         bookingRepository.save(booking);
+
     }
 
+//    public String timeTaken(Booking time) {
+//
+//    }
 
 }

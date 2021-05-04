@@ -68,5 +68,11 @@
             <column name="description" type="text"></column>
         </addColumn>
     </changeSet>
+    <changeSet id="add Pin" author="Märt">
+        <addColumn tableName="booking">
+            <column name="pin" type="int"></column>
+        </addColumn>
+    </changeSet>
+
 
 </databaseChangeLog>
