@@ -17,4 +17,6 @@ public class BookingController {
         return "Aitäh. Teie teenus " + id.getServiceTypeId() + " asukohaga " + id.getWashStationId() + " on kinnitatud " +
                 "kuupäeval " + id.getDateTime() + ". Teie kood on " + id.getPin();
     }
+
+
 }

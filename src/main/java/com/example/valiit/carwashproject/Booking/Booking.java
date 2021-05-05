@@ -65,12 +65,6 @@ public class Booking {
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
-
-
-
-    public LocalDateTime of(int year, int month, int dayOfMonth, int hour, int minute) {
-        return dateTime;
-    }
 }
 
 
