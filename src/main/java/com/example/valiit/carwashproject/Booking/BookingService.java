@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,5 +35,13 @@ public class BookingService {
             throw new ApplicationException("See aeg on broneeritud");
         }
         return "";
+    }
+
+    public List<WashStation> getWashStationInfo(Integer id) {
+        return washStationRepository.getById(id);
+    }
+
+    public List<ServiceType> getServiceTypeInfo(Integer id) {
+        return serviceTypeRepository.getById(id);
     }
 }
