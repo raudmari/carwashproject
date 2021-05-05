@@ -37,11 +37,11 @@ public class BookingService {
         return "";
     }
 
-    public List<WashStation> getWashStationInfo(Integer id) {
-        return washStationRepository.getById(id);
+    public List<WashStation> getWashStationInfo() {
+        return washStationRepository.findAllBy();
     }
 
-    public List<ServiceType> getServiceTypeInfo(Integer id) {
-        return serviceTypeRepository.getById(id);
+    public List<ServiceType> getServiceTypeInfo() {
+        return serviceTypeRepository.findAllBy();
     }
 }

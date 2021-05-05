@@ -11,6 +11,14 @@ public class WashStation {
     private String city;
     private String address;
 
+
+
+    public WashStation() {
+        this.getId();
+        this.getCity();
+        this.getAddress();
+    }
+
     public Integer getId() {
         return id;
     }

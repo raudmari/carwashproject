@@ -22,13 +22,13 @@ public class BookingController {
 
     @CrossOrigin
     @GetMapping("api/public/carwash/washStation")
-    public List<WashStation> getWashStationInfo(@RequestParam("id") Integer id) {
-        return bookingService.getWashStationInfo(id);
+    public List<WashStation> getWashStationInfo() {
+        return bookingService.getWashStationInfo();
     }
 
     @CrossOrigin
     @GetMapping("api/public/carwash/serviceType")
-    public List<ServiceType> getServiceTypeInfo(@RequestParam("id") Integer id) {
-        return bookingService.getServiceTypeInfo(id);
+    public List<ServiceType> getServiceTypeInfo() {
+        return bookingService.getServiceTypeInfo();
     }
 }
