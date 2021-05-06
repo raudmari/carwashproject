@@ -75,7 +75,7 @@
     </changeSet>
     <changeSet id="6-5-21 add station name to wash_station" author="Marion">
         <addColumn tableName="wash_station">
-            <column name="station_name" ></column>
+            <column name="station_name" type="text"></column>
         </addColumn>
     </changeSet>
 
