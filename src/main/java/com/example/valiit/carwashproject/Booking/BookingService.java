@@ -5,7 +5,7 @@ import com.example.valiit.carwashproject.exceptions.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,17 +31,32 @@ public class BookingService {
 
     public String timeTaken(Booking time) {
         Optional<Booking> bookingOptional = bookingRepository.findByDateTimeAndWashStationId(time.getDateTime(), time.getWashStationId());
-        if(bookingOptional.isPresent()){
+        if (bookingOptional.isPresent()) {
             throw new ApplicationException("See aeg on broneeritud");
         }
         return "";
     }
 
-    public List<WashStation> getWashStationInfo() {
-        return washStationRepository.findAllBy();
+//    public String getWashStationInfo(Integer id) {
+//        washStationRepository.findById(id);
+//        return "";
+//    }
+
+    public List<WashStationInfoResponse> getWashStationInfo() {
+        List<WashStationInfoResponse> resultList = new ArrayList<>();
+        List<WashStation> washStations = washStationRepository.findAllBy();
+        for (WashStation washStation : washStations) {
+            resultList.add(new WashStationInfoResponse(washStation));
+        }
+        return resultList;
     }
 
-    public List<ServiceType> getServiceTypeInfo() {
-        return serviceTypeRepository.findAllBy();
+    public List<ServiceTypeInfoResponse> getServiceTypeInfo() {
+        List<ServiceTypeInfoResponse> resultList = new ArrayList<>();
+        List<ServiceType> serviceTypes = serviceTypeRepository.findAllBy();
+        for (ServiceType serviceType : serviceTypes) {
+            resultList.add(new ServiceTypeInfoResponse(serviceType));
+        }
+        return resultList;
     }
 }

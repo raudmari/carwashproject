@@ -1,5 +1,6 @@
 package com.example.valiit.carwashproject.Booking;
 
+import com.example.valiit.carwashproject.exceptions.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,13 +23,13 @@ public class BookingController {
 
     @CrossOrigin
     @GetMapping("api/public/carwash/washStation")
-    public List<WashStation> getWashStationInfo() {
+    public List<WashStationInfoResponse> getWashStationInfo() {
         return bookingService.getWashStationInfo();
     }
 
     @CrossOrigin
     @GetMapping("api/public/carwash/serviceType")
-    public List<ServiceType> getServiceTypeInfo() {
+    public List<ServiceTypeInfoResponse> getServiceTypeInfo() {
         return bookingService.getServiceTypeInfo();
     }
 }
