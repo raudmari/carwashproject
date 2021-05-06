@@ -12,6 +12,13 @@ public class ServiceType {
     private String duration;
     private String washType;
 
+    public ServiceType() {
+        this.getId();
+        this.getPrice();
+        this.getDuration();
+        this.getWashType();
+    }
+
     public Integer getId() {
         return id;
     }
