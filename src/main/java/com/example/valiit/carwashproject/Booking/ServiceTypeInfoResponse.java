@@ -7,7 +7,7 @@ public class ServiceTypeInfoResponse {
 
     public ServiceTypeInfoResponse(ServiceType serviceType) {
         this.id = serviceType.getId();
-        this.text = serviceType.getWashType() + ": " + serviceType.getPrice() + " EUR: " + serviceType.getPrice() + " min";
+        this.text = serviceType.getWashType() + " " + serviceType.getPrice() + " EUR: " + serviceType.getPrice() + " min";
     }
 
     public Integer getId() {
