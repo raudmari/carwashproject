@@ -12,6 +12,7 @@ public class StationController {
     @Autowired
     private StationService stationService;
 
-    @GetMapping("/api/public/carWash/station")
+    //http://localhost:9090/api/public/carWash/stations
+    @GetMapping("/api/public/carWash/stations")
     public List<AllStations> getStations() {return stationService.getAllStations(); }
 }

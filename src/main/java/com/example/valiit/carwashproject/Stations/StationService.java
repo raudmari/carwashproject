@@ -8,21 +8,17 @@ import java.util.List;
 
 @Service
 public class StationService {
-/*
-    @Autowired
-    private StationsHibernate stationsHibernate;
 
     @Autowired
     private HibernateStationsRepository hibernateStationsRepository;
 
     public List<AllStations> getAllStations() {
-        List<StationsHibernate> info = hibernateStationsRepository.findAll();
+        List<StationsHibernate> stationsAll = hibernateStationsRepository.findAllBy();
         List<AllStations> allStations = new ArrayList<>();
-        for (StationsHibernate stationsHibernate : info) {
-            allStations.get()
+        for (StationsHibernate stationsHibernate : stationsAll) {
+            allStations.add(new AllStations(stationsHibernate));
         }
         return allStations;
-
-        }*/
+    }
 
 }
