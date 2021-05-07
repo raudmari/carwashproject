@@ -3,11 +3,11 @@ package com.example.valiit.carwashproject.Booking;
 public class ServiceTypeInfoResponse {
 
     private Integer id;
-    private String title;
+    private String text;
 
     public ServiceTypeInfoResponse(ServiceType serviceType) {
         this.id = serviceType.getId();
-        this.title = serviceType.getWashType() + ": " + serviceType.getPrice() + " EUR: " + serviceType.getPrice() + " min";
+        this.text = serviceType.getWashType() + ": " + serviceType.getPrice() + " EUR: " + serviceType.getPrice() + " min";
     }
 
     public Integer getId() {
@@ -18,11 +18,11 @@ public class ServiceTypeInfoResponse {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getText() {
+        return text;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setText(String text) {
+        this.text = text;
     }
 }

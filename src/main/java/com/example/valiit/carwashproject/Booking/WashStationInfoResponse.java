@@ -2,11 +2,11 @@ package com.example.valiit.carwashproject.Booking;
 
 public class WashStationInfoResponse {
     private Integer id;
-    private String title;
+    private String text;
 
     public WashStationInfoResponse(WashStation washStation) {
         this.id = washStation.getId();
-        this.title = washStation.getCity() + ": " + washStation.getAddress();
+        this.text = washStation.getCity() + ": " + washStation.getAddress();
     }
 
     public Integer getId() {
@@ -17,11 +17,11 @@ public class WashStationInfoResponse {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getText() {
+        return text;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setText(String text) {
+        this.text = text;
     }
 }
