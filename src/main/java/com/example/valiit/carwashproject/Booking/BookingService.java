@@ -37,11 +37,6 @@ public class BookingService {
         return "";
     }
 
-//    public String getWashStationInfo(Integer id) {
-//        washStationRepository.findById(id);
-//        return "";
-//    }
-
     public List<WashStationInfoResponse> getWashStationInfo() {
         List<WashStationInfoResponse> resultList = new ArrayList<>();
         List<WashStation> washStations = washStationRepository.findAllBy();
