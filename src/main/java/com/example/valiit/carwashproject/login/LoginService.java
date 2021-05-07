@@ -21,19 +21,19 @@ public class LoginService {
     private PasswordEncoder passwordEncoder;
 
     public String logIn(LoginRequest loginRequest) {
-        LoginHibernate getPasswordByUsername = hibernateLoginRepository.findByUsername(loginRequest.getUsername());
+        LoginHibernate getPasswordByEmail = hibernateLoginRepository.findByEmail(loginRequest.getEmail());
         String rawPassword = loginRequest.getPassword();
-        String encodedPassword = getPasswordByUsername.getPassword();
+        String encodedPassword = getPasswordByEmail.getPassword();
         if (passwordEncoder.matches(rawPassword,encodedPassword)) {
-            getPasswordByUsername.setLoginTime(LocalDateTime.now());
-            hibernateLoginRepository.save(getPasswordByUsername);
+            getPasswordByEmail.setLoginTime(LocalDateTime.now());
+            hibernateLoginRepository.save(getPasswordByEmail);
             Date today = new Date();
             Date tokenExpirationDate = new Date(today.getTime() + 1000 * 60 * 60);
             JwtBuilder jwtBuilder = Jwts.builder()
                     .setExpiration(tokenExpirationDate)
                     .setIssuedAt(new Date())
                     .signWith(SignatureAlgorithm.HS256, "c2VjcmV0C")
-                    .claim("username", loginRequest.getUsername());
+                    .claim("email", loginRequest.getEmail());
 
             return jwtBuilder.compact();
         } else {

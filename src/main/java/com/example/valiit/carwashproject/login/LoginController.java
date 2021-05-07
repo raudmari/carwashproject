@@ -11,8 +11,8 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    // http://localhost:9090/api/public/login
-    @PostMapping("/api/public/login")
+    // http://localhost:9090/api/public/carWash/login
+    @PostMapping("/api/public/carWash/login")
     public String logIn(@RequestBody LoginRequest loginRequest) {
         return loginService.logIn(loginRequest);
     }
