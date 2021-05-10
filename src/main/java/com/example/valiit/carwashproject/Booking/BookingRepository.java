@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
     Optional<Booking> findByDateTimeAndWashStationId(LocalDateTime dateTime, Integer washStationId);
+
 }
