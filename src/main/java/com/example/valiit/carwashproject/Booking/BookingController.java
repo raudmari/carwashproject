@@ -14,11 +14,10 @@ public class BookingController {
 
     @CrossOrigin
     @PostMapping("api/public/carwash/booking")
-    public String booking(@RequestBody Booking id) {
+    public Integer booking(@RequestBody Booking id) {
         bookingService.timeTaken(id);
-        bookingService.booking(id);
-        return "Aitäh. Teie teenus " + id.getServiceTypeId() + " asukohaga " + id.getWashStationId() + " on kinnitatud " +
-                "kuupäeval " + id.getDateTime() + ". Teie kood on " + id.getPin();
+        return bookingService.booking(id);
+
     }
 
     @CrossOrigin

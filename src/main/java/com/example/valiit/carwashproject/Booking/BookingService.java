@@ -18,7 +18,7 @@ public class BookingService {
     @Autowired
     private ServiceTypeRepository serviceTypeRepository;
 
-    public void booking(Booking info) {
+    public Integer booking(Booking info) {
         Booking booking = new Booking();
         booking.setDateTime(info.getDateTime());
         booking.setWashStationId(info.getWashStationId());
@@ -26,7 +26,7 @@ public class BookingService {
         booking.setCustomerId(info.getCustomerId());
         booking.setPin(info.getPin());
         bookingRepository.save(booking);
-
+        return info.getPin();
     }
 
     public String timeTaken(Booking time) {
@@ -36,11 +36,6 @@ public class BookingService {
         }
         return "";
     }
-
-//    public String getWashStationInfo(Integer id) {
-//        washStationRepository.findById(id);
-//        return "";
-//    }
 
     public List<WashStationInfoResponse> getWashStationInfo() {
         List<WashStationInfoResponse> resultList = new ArrayList<>();
