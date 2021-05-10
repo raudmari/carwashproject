@@ -36,6 +36,7 @@ public class BookingController {
     @CrossOrigin
     @GetMapping("api/public/carwash/pin")
     public Integer pin(@RequestParam("id") Booking id) {
-        return bookingService.pinByBookingId(id.getPin());
+        bookingService.pinByBookingId(id);
+        return id.getPin();
     }
 }
