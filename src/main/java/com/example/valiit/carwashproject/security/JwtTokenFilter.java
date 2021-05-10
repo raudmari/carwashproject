@@ -35,7 +35,7 @@ public class JwtTokenFilter extends GenericFilterBean {
         if (attribute == null) {
             return null;
         }
-        if (attribute.startsWith("Bearer")) {
+        if (attribute.startsWith("Bearer ")) {
             return attribute.substring(7);
         }
         return attribute;
