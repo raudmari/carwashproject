@@ -32,4 +32,10 @@ public class BookingController {
     public List<ServiceTypeInfoResponse> getServiceTypeInfo() {
         return bookingService.getServiceTypeInfo();
     }
+
+    @CrossOrigin
+    @GetMapping("api/public/carwash/pin")
+    public Integer pin(@RequestParam("id") Booking id) {
+        return bookingService.pinByBookingId(id.getPin());
+    }
 }

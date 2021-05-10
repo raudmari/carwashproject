@@ -54,4 +54,9 @@ public class BookingService {
         }
         return resultList;
     }
+
+    public Integer pinByBookingId(Booking id) {
+        Booking booking = new Booking();
+         return booking.getPin();
+    }
 }
