@@ -37,7 +37,7 @@ public class LoginService {
 
             return jwtBuilder.compact();
         } else {
-            throw new ApplicationException("Vale parool");
+            throw new ApplicationException("Vale e-mail");
         }
     }
 
