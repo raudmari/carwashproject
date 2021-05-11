@@ -26,12 +26,16 @@ public class BookingService {
     private HibernateUserHistoryRepository userHistoryRepository;
 
     public Integer booking(Booking info, String email) {
-        LoginHibernate user = loginRepository.findByEmail(email);
+        Integer userId = null;
+        if(email != null) {
+            LoginHibernate user = loginRepository.findByEmail(email);
+            userId = user.getId();
+        }
         Booking booking = new Booking();
         booking.setDateTime(info.getDateTime());
         booking.setWashStationId(info.getWashStationId());
         booking.setServiceTypeId(info.getServiceTypeId());
-        booking.setCustomerId(user.getId());
+        booking.setCustomerId(userId);
         booking.setPin(info.getPin());
         bookingRepository.save(booking);
         return info.getPin();

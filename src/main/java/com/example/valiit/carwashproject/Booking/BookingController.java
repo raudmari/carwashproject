@@ -17,8 +17,13 @@ public class BookingController {
     @CrossOrigin
     @PostMapping("api/public/carwash/booking")
     public Integer booking(@RequestBody Booking id, Principal principal) {
-        String email = principal.getName();
+
         bookingService.timeTaken(id);
+        String email = null;
+        if(principal != null){
+
+            principal.getName();
+        }
         return bookingService.booking(id, email);
     }
 
