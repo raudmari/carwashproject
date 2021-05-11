@@ -22,8 +22,8 @@ public class Controller {
 
 
     //http://localhost:9090/carWash/newAccountJoin
-    @CrossOrigin
-    @PostMapping("carWash/newAccountJoin")
+
+    @PostMapping("api/public/carWash/newAccountJoin")
     public void newAccountJoin(@RequestBody AccountJoin request) {
         service.newAccountJoin(request);
     }

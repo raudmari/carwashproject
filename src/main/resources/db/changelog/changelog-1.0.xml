@@ -86,6 +86,11 @@
             <column name="login_time" type="timestamp"></column>
         </addColumn>
     </changeSet>
+    <changeSet id="Delete username" author="Märt">
+        <dropColumn tableName="customer" columnName="username">
+            
+        </dropColumn>
+    </changeSet>
 
 
 </databaseChangeLog>
