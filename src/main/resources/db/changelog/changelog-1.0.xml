@@ -81,11 +81,6 @@
    <changeSet id="7-5-21 service_type duration new data type numeric" author="Marion Raudsepp">
         <modifyDataType tableName="service_type" columnName="duration" newDataType="numeric"></modifyDataType>
    </changeSet>
-    <changeSet id="Login date" author="Märt">
-        <addColumn tableName="customer">
-            <column name="login_time" type="timestamp"></column>
-        </addColumn>
-    </changeSet>
     <changeSet id="Delete username" author="Märt">
         <dropColumn tableName="customer" columnName="username">
             
