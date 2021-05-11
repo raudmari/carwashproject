@@ -20,8 +20,8 @@ public class Controller {
     private Service service;
 
 
-    //http://localhost:9090/carWash/newAccountJoin
-    @PostMapping("/api/carWash/newAccountJoin")
+    //http://localhost:9090/api/public/carWash/newAccountJoin
+    @PostMapping("/api/public/carWash/newAccountJoin")
     public void newAccountJoin(@RequestBody AccountJoin request) {
         service.newAccountJoin(request);
     }
