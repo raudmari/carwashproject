@@ -2,6 +2,8 @@ package com.example.valiit.carwashproject.Booking;
 
 
 import com.example.valiit.carwashproject.exceptions.ApplicationException;
+import com.example.valiit.carwashproject.login.HibernateLoginRepository;
+import com.example.valiit.carwashproject.login.LoginHibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,13 +19,16 @@ public class BookingService {
     private WashStationRepository washStationRepository;
     @Autowired
     private ServiceTypeRepository serviceTypeRepository;
+    @Autowired
+    private HibernateLoginRepository loginRepository;
 
-    public Integer booking(Booking info) {
+    public Integer booking(Booking info, String email) {
+        LoginHibernate user = loginRepository.findByEmail(email);
         Booking booking = new Booking();
         booking.setDateTime(info.getDateTime());
         booking.setWashStationId(info.getWashStationId());
         booking.setServiceTypeId(info.getServiceTypeId());
-        booking.setCustomerId(info.getCustomerId());
+        booking.setCustomerId(user.getId());
         booking.setPin(info.getPin());
         bookingRepository.save(booking);
         return info.getPin();
