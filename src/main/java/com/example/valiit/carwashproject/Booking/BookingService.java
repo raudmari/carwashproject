@@ -1,6 +1,7 @@
 package com.example.valiit.carwashproject.Booking;
 
 
+import com.example.valiit.carwashproject.DTO.UserHistory;
 import com.example.valiit.carwashproject.exceptions.ApplicationException;
 import com.example.valiit.carwashproject.login.HibernateLoginRepository;
 import com.example.valiit.carwashproject.login.LoginHibernate;
@@ -21,6 +22,8 @@ public class BookingService {
     private ServiceTypeRepository serviceTypeRepository;
     @Autowired
     private HibernateLoginRepository loginRepository;
+    @Autowired
+    private HibernateUserHistoryRepository userHistoryRepository;
 
     public Integer booking(Booking info, String email) {
         LoginHibernate user = loginRepository.findByEmail(email);
@@ -59,4 +62,15 @@ public class BookingService {
         }
         return resultList;
     }
+
+    public List<UserHistory> getUserHistory(String email) {
+        Integer customerId = loginRepository.findByEmail(email).getId();
+        List<UserHistoryHibernate> userHistoryHibernateList = userHistoryRepository.getAllByCustomerId(customerId);
+        List<UserHistory> userHistories = new ArrayList<>();
+        for (UserHistoryHibernate userHistoryHibernate : userHistoryHibernateList) {
+            userHistories.add(new UserHistory(userHistoryHibernate));
+        }
+        return userHistories;
+    }
+
 }

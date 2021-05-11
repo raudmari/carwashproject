@@ -1,5 +1,6 @@
 package com.example.valiit.carwashproject.Booking;
 
+import com.example.valiit.carwashproject.DTO.UserHistory;
 import com.example.valiit.carwashproject.exceptions.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,6 @@ public class BookingController {
         String email = principal.getName();
         bookingService.timeTaken(id);
         return bookingService.booking(id, email);
-
     }
 
     @CrossOrigin
@@ -32,5 +32,10 @@ public class BookingController {
     @GetMapping("api/public/carwash/serviceType")
     public List<ServiceTypeInfoResponse> getServiceTypeInfo() {
         return bookingService.getServiceTypeInfo();
+    }
+
+    @GetMapping("api/public/carwash/history/")
+    public List<UserHistory> getUserHistory(Principal principal){
+        return bookingService.getUserHistory(principal.getName());
     }
 }
