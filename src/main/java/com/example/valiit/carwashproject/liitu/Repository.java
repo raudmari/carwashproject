@@ -16,25 +16,24 @@ public class Repository {
 
     public void newAccountJoin(AccountJoin request) {
 
-        String sql = "INSERT INTO customer(firstName, lastName, phone, email, username, password)" +
-                " VALUES (:firstname, :lastname, :phone, :email, :username, :password)";
+        String sql = "INSERT INTO customer(firstName, lastName, phone, email, password)" +
+                " VALUES (:firstname, :lastname, :phone, :email, :password)";
 
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("firstname", request.getFirstName());
         paramMap.put("lastname", request.getLastName());
         paramMap.put("email", request.getEmail());
         paramMap.put("phone", request.getPhone());
-        paramMap.put("username", request.getUsername());
         paramMap.put("password", request.getPassword());
         jdbcTemplate.update(sql, paramMap);
     }
 
-    public boolean usernameExists(String username) {
-        String usernameExists = "SELECT count(*) > 0 FROM customer WHERE username = :username";
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("username", username);
-        return jdbcTemplate.queryForObject(usernameExists, paramMap, Boolean.class);
-    }
+//    public boolean usernameExists(String username) {
+//        String usernameExists = "SELECT count(*) > 0 FROM customer WHERE username = :username";
+//        Map<String, Object> paramMap = new HashMap<>();
+//        paramMap.put("username", username);
+//        return jdbcTemplate.queryForObject(usernameExists, paramMap, Boolean.class);
+//    }
 
     public boolean emailExists(String email) {
         String emailExists = "SELECT count(*) > 0 FROM customer WHERE email = :email";

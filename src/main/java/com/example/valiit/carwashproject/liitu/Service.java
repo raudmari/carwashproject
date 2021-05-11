@@ -20,9 +20,9 @@ public class Service {
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         request.setPassword(encodedPassword);
 
-        if (repository.usernameExists(request.getUsername())) {
-            throw new ApplicationException("User already exists");
-        }
+//        if (repository.usernameExists(request.getUsername())) {
+//            throw new ApplicationException("User already exists");
+//        }
         if (repository.phoneExists(request.getPhone())) {
             throw new ApplicationException("Phone number already exists");
         }

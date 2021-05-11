@@ -15,15 +15,14 @@ public class Controller {
 
 
     @Autowired
-    private NamedParameterJdbcTemplate jdbcTemplate;
+    public NamedParameterJdbcTemplate jdbcTemplate;
     @Autowired
-    private Service service;
+    public Service service;
 
 
-
-    
-    //http://localhost:9090/api/public/carWash/newAccountJoin
-    @PostMapping("/api/public/carWash/newAccountJoin")
+    //http://localhost:9090/carWash/newAccountJoin
+    //@CrossOrigin
+    @PostMapping("api/public/carWash/newAccountJoin")
     public void newAccountJoin(@RequestBody AccountJoin request) {
         service.newAccountJoin(request);
     }
