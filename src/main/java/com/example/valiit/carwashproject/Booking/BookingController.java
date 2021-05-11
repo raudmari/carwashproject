@@ -18,7 +18,7 @@ public class BookingController {
     public Integer booking(@RequestBody Booking id, Principal principal) {
         String email = principal.getName();
         bookingService.timeTaken(id);
-        return bookingService.booking(id);
+        return bookingService.booking(id, email);
 
     }
 
