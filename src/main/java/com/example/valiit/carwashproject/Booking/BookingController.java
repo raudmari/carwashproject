@@ -4,6 +4,7 @@ import com.example.valiit.carwashproject.exceptions.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -14,7 +15,8 @@ public class BookingController {
 
     @CrossOrigin
     @PostMapping("api/public/carwash/booking")
-    public Integer booking(@RequestBody Booking id) {
+    public Integer booking(@RequestBody Booking id, Principal principal) {
+        String email = principal.getName();
         bookingService.timeTaken(id);
         return bookingService.booking(id);
 
