@@ -22,7 +22,7 @@ public class Controller {
 
     //http://localhost:9090/carWash/newAccountJoin
     //@CrossOrigin
-    @PostMapping("api/public/carWash/newAccountJoin")
+    @PostMapping("api/public/carwash/newAccountJoin")
     public void newAccountJoin(@RequestBody AccountJoin request) {
         service.newAccountJoin(request);
     }

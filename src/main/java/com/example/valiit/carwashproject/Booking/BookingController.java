@@ -17,11 +17,9 @@ public class BookingController {
     @CrossOrigin
     @PostMapping("api/public/carwash/booking")
     public Integer booking(@RequestBody Booking id, Principal principal) {
-
         bookingService.timeTaken(id);
         String email = null;
         if(principal != null){
-
             principal.getName();
         }
         return bookingService.booking(id, email);
@@ -39,7 +37,7 @@ public class BookingController {
         return bookingService.getServiceTypeInfo();
     }
 
-    @GetMapping("api/public/carwash/history/")
+    @GetMapping("api/public/carwash/account")
     public List<UserHistory> getUserHistory(Principal principal){
         return bookingService.getUserHistory(principal.getName());
     }

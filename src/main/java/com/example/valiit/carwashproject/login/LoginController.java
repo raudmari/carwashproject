@@ -12,7 +12,7 @@ public class LoginController {
     private LoginService loginService;
 
     // http://localhost:9090/api/public/carWash/login
-    @PostMapping("/api/public/carWash/login")
+    @PostMapping("/api/public/carwash/login")
     public String logIn(@RequestBody LoginRequest loginRequest) {
         return loginService.logIn(loginRequest);
     }
