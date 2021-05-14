@@ -2,14 +2,17 @@ package com.example.valiit.carwashproject.Booking;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class ServiceType {
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
     private Double price;
-    private String duration;
+    private Double duration;
     private String washType;
 
     public ServiceType() {
@@ -35,11 +38,11 @@ public class ServiceType {
         this.price = price;
     }
 
-    public String getDuration() {
+    public Double getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(Double duration) {
         this.duration = duration;
     }
 

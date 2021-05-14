@@ -1,5 +1,8 @@
 package com.example.valiit.carwashproject.Booking;
 
+import com.example.valiit.carwashproject.DTO.AllServices;
+import com.example.valiit.carwashproject.DTO.AllStations;
+import com.example.valiit.carwashproject.DTO.BookingRequest;
 import com.example.valiit.carwashproject.DTO.UserHistory;
 import com.example.valiit.carwashproject.exceptions.ApplicationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +19,11 @@ public class BookingController {
 
     @CrossOrigin
     @PostMapping("api/public/carwash/booking")
-    public Integer booking(@RequestBody Booking id, Principal principal) {
+    public Integer booking(@RequestBody BookingRequest id, Principal principal) {
         bookingService.timeTaken(id);
         String email = null;
-        if(principal != null){
-            principal.getName();
+        if (principal != null) {
+            email = principal.getName();
         }
         return bookingService.booking(id, email);
     }
@@ -37,8 +40,23 @@ public class BookingController {
         return bookingService.getServiceTypeInfo();
     }
 
+    @GetMapping("api/public/carwash/service")
+    public List<AllServices> getServece() {
+        return bookingService.getService();
+    }
+
+    @GetMapping("api/public/carwash/stations")
+    public List<AllStations> getStation() {
+        return bookingService.getStations();
+    }
+
+
     @GetMapping("api/public/carwash/account")
-    public List<UserHistory> getUserHistory(Principal principal){
-        return bookingService.getUserHistory(principal.getName());
+    public List<UserHistory> getUserHistory(Principal principal) {
+        String email = null;
+        if (principal != null) {
+            email= principal.getName();
+        }
+        return bookingService.getUserHistory(email);
     }
 }

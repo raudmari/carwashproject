@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface WashStationRepository extends JpaRepository<WashStation, Integer> {
       List<WashStation> findAllBy();
 
+
 }

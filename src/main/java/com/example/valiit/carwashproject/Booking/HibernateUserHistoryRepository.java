@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface HibernateUserHistoryRepository extends JpaRepository<UserHistoryHibernate,Integer> {
-    List<UserHistoryHibernate> getAllByCustomerId(Integer customerId);
+public interface HibernateUserHistoryRepository extends JpaRepository<Booking,Integer> {
+    List<Booking> getAllByCustomerId(Integer customerId);
 }

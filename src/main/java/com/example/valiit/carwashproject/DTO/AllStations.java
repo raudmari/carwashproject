@@ -1,23 +1,17 @@
-package com.example.valiit.carwashproject.Stations;
+package com.example.valiit.carwashproject.DTO;
 
-import javax.persistence.*;
+import com.example.valiit.carwashproject.Booking.WashStation;
 
-@Entity
-@Table (name="wash_station")
-public class StationsHibernate {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+
+public class AllStations {
     private String city;
     private String address;
     private String stationName;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public AllStations(WashStation washStation) {
+        this.city = washStation.getCity();
+        this.address = washStation.getAddress();
+        this.stationName = washStation.getStationName();
     }
 
     public String getCity() {

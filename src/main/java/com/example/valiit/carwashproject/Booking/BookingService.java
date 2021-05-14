@@ -1,10 +1,15 @@
 package com.example.valiit.carwashproject.Booking;
 
 
+import com.example.valiit.carwashproject.DTO.AllServices;
+import com.example.valiit.carwashproject.DTO.AllStations;
+import com.example.valiit.carwashproject.DTO.BookingRequest;
 import com.example.valiit.carwashproject.DTO.UserHistory;
+
 import com.example.valiit.carwashproject.exceptions.ApplicationException;
 import com.example.valiit.carwashproject.login.HibernateLoginRepository;
 import com.example.valiit.carwashproject.login.LoginHibernate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,26 +27,28 @@ public class BookingService {
     private ServiceTypeRepository serviceTypeRepository;
     @Autowired
     private HibernateLoginRepository loginRepository;
-    @Autowired
-    private HibernateUserHistoryRepository userHistoryRepository;
 
-    public Integer booking(Booking info, String email) {
+    public Integer booking(BookingRequest info, String email) {
         Integer userId = null;
-        if(email != null) {
+        if(userId != null) {
             LoginHibernate user = loginRepository.findByEmail(email);
             userId = user.getId();
         }
         Booking booking = new Booking();
         booking.setDateTime(info.getDateTime());
-        booking.setWashStationId(info.getWashStationId());
-        booking.setServiceTypeId(info.getServiceTypeId());
+        WashStation washStation = new WashStation();
+        washStation.setId(info.getWashStationId());
+        booking.setWashStation(washStation);
+        ServiceType serviceType = new ServiceType();
+        serviceType.setId(info.getServiceTypeId());
+        booking.setServiceType(serviceType);
         booking.setCustomerId(userId);
         booking.setPin(info.getPin());
         bookingRepository.save(booking);
         return info.getPin();
     }
 
-    public String timeTaken(Booking time) {
+    public String timeTaken(BookingRequest time) {
         Optional<Booking> bookingOptional = bookingRepository.findByDateTimeAndWashStationId(time.getDateTime(), time.getWashStationId());
         if (bookingOptional.isPresent()) {
             throw new ApplicationException("See aeg on broneeritud");
@@ -68,13 +75,35 @@ public class BookingService {
     }
 
     public List<UserHistory> getUserHistory(String email) {
-        Integer customerId = loginRepository.findByEmail(email).getId();
-        List<UserHistoryHibernate> userHistoryHibernateList = userHistoryRepository.getAllByCustomerId(customerId);
+        Integer userId = null;
+        if(userId != null) {
+            LoginHibernate user = loginRepository.findByEmail(email);
+            userId = user.getId();
+        }
+        List<Booking> bookingList = bookingRepository.getAllByCustomerId(userId);
         List<UserHistory> userHistories = new ArrayList<>();
-        for (UserHistoryHibernate userHistoryHibernate : userHistoryHibernateList) {
-            userHistories.add(new UserHistory(userHistoryHibernate));
+        for (Booking booking : bookingList) {
+            userHistories.add(new UserHistory(booking));
         }
         return userHistories;
+    }
+
+    public List<AllServices> getService() {
+        List<AllServices> allServices = new ArrayList<>();
+        List<ServiceType> serviceTypes = serviceTypeRepository.findAllBy();
+        for (ServiceType serviceType :serviceTypes) {
+            allServices.add(new AllServices(serviceType));
+        }
+        return allServices;
+    }
+
+    public List<AllStations> getStations() {
+        List<AllStations> allStations = new ArrayList<>();
+        List<WashStation> washStations = washStationRepository.findAllBy();
+        for (WashStation washStation : washStations) {
+            allStations.add(new AllStations(washStation));
+        }
+        return allStations;
     }
 
 }

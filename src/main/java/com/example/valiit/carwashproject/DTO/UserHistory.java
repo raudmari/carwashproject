@@ -1,27 +1,30 @@
 package com.example.valiit.carwashproject.DTO;
 
-import com.example.valiit.carwashproject.Booking.UserHistoryHibernate;
+import com.example.valiit.carwashproject.Booking.Booking;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.time.LocalDateTime;
 
 public class UserHistory {
 
-    private LocalDate washDateTime;
+    private LocalDateTime washDateTime;
     private Integer washType;
     private Integer washStation;
+    private String washStationName;
+    private String washTypeName;
 
-    public UserHistory(UserHistoryHibernate userHistoryHibernate){
-        this.washDateTime = userHistoryHibernate.getDateTime();
-        this.washType = userHistoryHibernate.getServiceTypeId();
-        this.washStation = userHistoryHibernate.getWashStationId();
+    public UserHistory(Booking booking){
+        this.washDateTime = booking.getDateTime();
+        this.washType = booking.getServiceType().getId();
+        this.washStation = booking.getWashStation().getId();
+        this.washTypeName = booking.getServiceType().getWashType();
+        this.washStationName = booking.getWashStation().getStationName();
     }
 
-    public LocalDate getWashDateTime() {
+    public LocalDateTime getWashDateTime() {
         return washDateTime;
     }
 
-    public void setWashDateTime(LocalDate washDateTime) {
+    public void setWashDateTime(LocalDateTime washDateTime) {
         this.washDateTime = washDateTime;
     }
 
@@ -39,5 +42,21 @@ public class UserHistory {
 
     public void setWashStation(Integer washStation) {
         this.washStation = washStation;
+    }
+
+    public String getWashStationName() {
+        return washStationName;
+    }
+
+    public void setWashStationName(String washStationName) {
+        this.washStationName = washStationName;
+    }
+
+    public String getWashTypeName() {
+        return washTypeName;
+    }
+
+    public void setWashTypeName(String washTypeName) {
+        this.washTypeName = washTypeName;
     }
 }

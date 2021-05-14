@@ -1,9 +1,7 @@
 package com.example.valiit.carwashproject.Booking;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
@@ -12,11 +10,31 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer washStationId;
-    private Integer serviceTypeId;
     private Integer customerId;
     private LocalDateTime dateTime;
-    private Integer pin =1+ (int) (Math.random() * 1000);
+    private Integer pin = 1+ (int) (Math.random() * 1000);
+    @ManyToOne
+    @JoinColumn(name="service_type_id")
+    private ServiceType serviceType;
+    @ManyToOne
+    @JoinColumn(name="wash_station_id")
+    private WashStation washStation;
+
+    public ServiceType getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(ServiceType serviceType) {
+        this.serviceType = serviceType;
+    }
+
+    public WashStation getWashStation() {
+        return washStation;
+    }
+
+    public void setWashStation(WashStation washStation) {
+        this.washStation = washStation;
+    }
 
     public Integer getPin() {
         return pin;
@@ -42,21 +60,6 @@ public class Booking {
         this.id = id;
     }
 
-    public Integer getWashStationId() {
-        return washStationId;
-    }
-
-    public void setWashStationId(Integer washStationId) {
-        this.washStationId = washStationId;
-    }
-
-    public Integer getServiceTypeId() {
-        return serviceTypeId;
-    }
-
-    public void setServiceTypeId(Integer serviceTypeId) {
-        this.serviceTypeId = serviceTypeId;
-    }
 
     public Integer getCustomerId() {
         return customerId;

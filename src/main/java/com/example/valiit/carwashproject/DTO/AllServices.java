@@ -1,14 +1,17 @@
-package com.example.valiit.carwashproject.servicetype;
+package com.example.valiit.carwashproject.DTO;
+
+
+import com.example.valiit.carwashproject.Booking.ServiceType;
 
 public class AllServices {
     private String washType;
     private Double price;
     private Double duration;
 
-    public AllServices(ServiceTypeHibernate serviceTypeHibernate){
-        this.duration = serviceTypeHibernate.getDuration();
-        this.price = serviceTypeHibernate.getPrice();
-        this.washType = serviceTypeHibernate.getWashType();
+    public AllServices(ServiceType serviceType){
+        this.duration = serviceType.getDuration();
+        this.price = serviceType.getPrice();
+        this.washType = serviceType.getWashType();
     }
 
     public String getWashType() {
